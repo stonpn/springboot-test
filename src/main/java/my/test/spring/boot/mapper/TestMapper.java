@@ -1,0 +1,11 @@
+package my.test.spring.boot.mapper;
+
+import org.apache.ibatis.annotations.Param;
+
+/**
+ * Created by pengni on 17-7-13.
+ */
+public interface TestMapper {
+
+    void updateById(@Param("id") long id);
+}
