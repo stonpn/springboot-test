@@ -1,6 +1,7 @@
 package my.test.spring.boot.common;
 
 
+import my.test.spring.boot.common.interceptor.RestInterceptor;
 import org.springframework.boot.context.embedded.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,5 +24,10 @@ public class SpringConfig {
         /// 设置总上传数据总大小
         factory.setMaxRequestSize("204800KB");
         return factory.createMultipartConfig();
+    }
+
+    @Bean
+    public RestInterceptor restInterceptor() {
+        return new RestInterceptor();
     }
 }
