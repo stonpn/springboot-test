@@ -24,7 +24,6 @@ public class RestInterceptor {
         if (request != null && request.length > 0) {
             if (request[0] instanceof HttpServletRequest) {
                 System.out.println("this is httprequest");
-                System.out.println(request[1] instanceof HttpServletResponse);
                 System.out.println(request.length);
             }
         }
