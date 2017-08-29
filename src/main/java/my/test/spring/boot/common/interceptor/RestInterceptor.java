@@ -5,6 +5,8 @@ import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,21 +17,22 @@ import javax.servlet.http.HttpServletResponse;
 @Aspect
 public class RestInterceptor {
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(RestInterceptor.class);
+
     @Pointcut("@within(org.springframework.stereotype.Controller)")
     private void anyMethod(){}
 
     @Around("anyMethod()")
     public Object invoke(ProceedingJoinPoint joinPoint) throws Throwable {
-        Object[] request = joinPoint.getArgs();
-        if (request != null && request.length > 0) {
-            if (request[0] instanceof HttpServletRequest) {
-                System.out.println("this is httprequest");
-                System.out.println(request.length);
-            }
+        Object[] augments = joinPoint.getArgs();
+        if (augments != null && augments.length > 0) {
+            HttpServletRequest request = (HttpServletRequest) augments[0];
         }
         Object result = joinPoint.proceed();
         System.out.println("after");
         return result;
     }
+
+
 
 }

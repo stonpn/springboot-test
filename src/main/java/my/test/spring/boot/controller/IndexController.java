@@ -33,4 +33,9 @@ public class IndexController {
 
         return "index";
     }
+
+    @RequestMapping("/myfamily")
+    public String myFamily(HttpServletRequest request) {
+        return "myfamily";
+    }
 }
