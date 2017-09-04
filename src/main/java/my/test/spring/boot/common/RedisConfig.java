@@ -24,7 +24,7 @@ public class RedisConfig {
 
     @Bean
     public JedisPool jedisPool() {
-        JedisPool jedisPool = new JedisPool(jedisPoolConfig(), "112.74.35.119", 6379);
+        JedisPool jedisPool = new JedisPool(jedisPoolConfig(), "112.74.35.119", 6379, 10000, "123456");
         return jedisPool;
     }
 
