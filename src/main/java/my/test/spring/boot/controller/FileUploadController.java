@@ -25,6 +25,9 @@ public class FileUploadController {
     @Value("${upload.gif}")
     private String gifPath;
 
+    @Value("${upload.sex.gif}")
+    private String sexGifPath;
+
     @RequestMapping("/upload")
     public @ResponseBody String uploadImg(@RequestParam("files") MultipartFile[] files) throws Exception {
         for (MultipartFile file : files) {
@@ -59,6 +62,40 @@ public class FileUploadController {
         File file = new File(dir + fileName);
         file.delete();
         return "redirect:" + url;
+    }
+
+    @RequestMapping("/file-sex-delete")
+    public String deleteSexImg(HttpServletRequest request) throws Exception {
+        String fileName = request.getParameter("filename");
+        if (!StringUtils.hasText(fileName)) {
+            return "index";
+        }
+        String dir = null;
+        String url = null;
+        if (fileName.endsWith(".gif") || fileName.endsWith(".GIF")) {
+            dir = sexGifPath;
+            url = "/list-s";
+        } else {
+            return "index";
+        }
+        File file = new File(dir + fileName);
+        file.delete();
+        return "redirect:" + url;
+    }
+
+    @RequestMapping("/upload-sex")
+    public @ResponseBody String uploadTest(@RequestParam("files") MultipartFile[] files) throws Throwable {
+        for (MultipartFile file : files) {
+            String fileName = System.currentTimeMillis() + file.getOriginalFilename();
+            String imgPath = null;
+            if (fileName.endsWith(".gif") || fileName.endsWith(".GIF")) {
+                imgPath = sexGifPath + fileName;
+            } else {
+                return "ok";
+            }
+            file.transferTo(new File(imgPath));
+        }
+        return "ok";
     }
 
     @RequestMapping("/test")

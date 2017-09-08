@@ -25,11 +25,10 @@ public class RestInterceptor {
     @Around("anyMethod()")
     public Object invoke(ProceedingJoinPoint joinPoint) throws Throwable {
         Object[] augments = joinPoint.getArgs();
-        if (augments != null && augments.length > 0) {
-            HttpServletRequest request = (HttpServletRequest) augments[0];
-        }
+//        if (augments != null && augments.length > 0) {
+//            HttpServletRequest request = (HttpServletRequest) augments[0];
+//        }
         Object result = joinPoint.proceed();
-        System.out.println("after");
         return result;
     }
 
