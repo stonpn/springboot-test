@@ -45,4 +45,19 @@ public class RedisClient {
         }
     }
 
+    public void setEx(String key, String value, int expire) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            jedis.set(key, value);
+            jedis.expire(key, expire);
+        } catch (Exception e) {
+            LOGGER.error("redis setEx error :{}", e);
+        } finally {
+            if (jedis != null) {
+                jedisPool.returnResource(jedis);
+            }
+        }
+    }
+
 }

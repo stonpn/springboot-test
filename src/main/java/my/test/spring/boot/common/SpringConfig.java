@@ -14,7 +14,6 @@ import javax.servlet.MultipartConfigElement;
  * Created by pengni on 17-8-14.
  */
 @Configuration
-@ComponentScan(basePackages="my.test.spring.boot")
 @PropertySource({"classpath:config/param.properties"})
 public class SpringConfig {
 
