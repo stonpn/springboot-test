@@ -4,7 +4,7 @@
 </head>
 <body>
 <br/><br/><br/><br/>
-<form enctype="multipart/form-data" action="http://127.0.0.1:8080/upload" method="post">
+<form enctype="multipart/form-data" action="/upload" method="post">
     <input type="file" style="width:200px;height:100px;" multiple="multiple" name="files" id="files"/>
     <input type="submit" value="upload" style="width:200px;" />
 </form>
