@@ -12,4 +12,9 @@ public class UploadDisplayController {
     public String displaySex(HttpServletRequest request) {
         return "upload-s";
     }
+
+    @RequestMapping("/up")
+    public String displayUp(HttpServletRequest request) {
+        return "up-index";
+    }
 }
