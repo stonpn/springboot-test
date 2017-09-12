@@ -28,6 +28,9 @@ public class FileUploadController {
     @Value("${upload.sex.gif}")
     private String sexGifPath;
 
+    @Value("${upload.other.sex}")
+    private String sexOtherPath;
+
     @RequestMapping("/upload")
     public @ResponseBody String uploadImg(@RequestParam("files") MultipartFile[] files) throws Exception {
         for (MultipartFile file : files) {
@@ -76,7 +79,8 @@ public class FileUploadController {
             dir = sexGifPath;
             url = "/list-s";
         } else {
-            return "index";
+            dir = sexOtherPath;
+            url = "other-s";
         }
         File file = new File(dir + fileName);
         file.delete();
@@ -91,7 +95,7 @@ public class FileUploadController {
             if (fileName.endsWith(".gif") || fileName.endsWith(".GIF")) {
                 imgPath = sexGifPath + fileName;
             } else {
-                return "ok";
+                imgPath = sexOtherPath + fileName;
             }
             file.transferTo(new File(imgPath));
         }

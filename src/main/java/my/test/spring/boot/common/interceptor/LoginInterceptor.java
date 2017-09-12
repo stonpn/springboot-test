@@ -1,10 +1,8 @@
 package my.test.spring.boot.common.interceptor;
 
-import my.test.spring.boot.cache.LoginCache;
 import my.test.spring.boot.util.LoginChecker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,9 +19,13 @@ public class LoginInterceptor implements HandlerInterceptor {
     private final static Logger LOGGER = LoggerFactory.getLogger(LoginInterceptor.class);
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object var3) throws Exception {
+        LOGGER.info(request.getRequestURI());
+        LOGGER.info(request.getServerName());
+        LOGGER.info("port" + request.getServerPort());
+        LOGGER.info(request.getQueryString());
         if (!loginChecker.checkLogin(request)) {
             LOGGER.info("interceptor login");
-            String callBack = request.getRequestURI();
+            String callBack = request.getServerName() + ":" + request.getServerPort() + request.getRequestURI();
             response.sendRedirect("/login?callback=" + callBack);
             return false;
         }

@@ -25,6 +25,9 @@ public class ImgListController {
     @Value("${upload.sex.gif}")
     private String sexGifPath;
 
+    @Value("${upload.other.sex}")
+    private String sexOtherPath;
+
     @RequestMapping("/list-image")
     public String ListCommonImg(Model model) {
         List<String> fileList = getFileNameList(path);
@@ -44,6 +47,13 @@ public class ImgListController {
         List<String> fileList = getFileNameList(sexGifPath);
         model.addAttribute("fileList", fileList);
         return "gif-s";
+    }
+
+    @RequestMapping("/other-s")
+    public String OtherSex(Model model) {
+        List<String> fileList = getFileNameList(sexOtherPath);
+        model.addAttribute("fileList", fileList);
+        return "other-s";
     }
 
     private List<String> getFileNameList(String url) {
