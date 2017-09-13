@@ -25,7 +25,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         LOGGER.info(request.getQueryString());
         if (!loginChecker.checkLogin(request)) {
             LOGGER.info("interceptor login");
-            String callBack = request.getServerName() + ":" + request.getServerPort() + request.getRequestURI();
+            String callBack = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getRequestURI();
             response.sendRedirect("/login?callback=" + callBack);
             return false;
         }
