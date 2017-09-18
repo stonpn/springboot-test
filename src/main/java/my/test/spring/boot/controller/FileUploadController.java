@@ -80,7 +80,7 @@ public class FileUploadController {
             url = "/list-s";
         } else {
             dir = sexOtherPath;
-            url = "other-s";
+            url = "/other-s";
         }
         File file = new File(dir + fileName);
         file.delete();
