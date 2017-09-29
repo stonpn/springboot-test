@@ -1,5 +1,7 @@
 package my.test.spring.boot.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,8 @@ import java.util.List;
  */
 @Controller
 public class ImgListController {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(ImgListController.class);
 
     @Value("${upload.path}")
     private String path;
@@ -45,6 +49,7 @@ public class ImgListController {
     @RequestMapping("/list-s")
     public String ListSex(Model model) {
         List<String> fileList = getFileNameList(sexGifPath);
+        LOGGER.info("list-s size:{}",fileList == null ? 0 : fileList.size());
         model.addAttribute("fileList", fileList);
         return "gif-s";
     }
