@@ -34,6 +34,7 @@ public class LoginController {
         }
         String errorTimeStr = loginCache.getLoginErrorTimes(jsId);
         if (errorTimeStr != null && Integer.parseInt(errorTimeStr) >= 3) {
+            loginCache.setLoginErrorTimes(jsId, String.valueOf(1 + Integer.parseInt(errorTimeStr)), 7200);
             return NOT_LOGIN_URL;
         }
         if (errorTimeStr == null) {

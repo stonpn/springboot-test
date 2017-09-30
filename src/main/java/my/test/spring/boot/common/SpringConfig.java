@@ -14,7 +14,7 @@ import javax.servlet.MultipartConfigElement;
  * Created by pengni on 17-8-14.
  */
 @Configuration
-@PropertySource({"classpath:config/param.properties"})
+@PropertySource({"classpath:param.properties"})
 public class SpringConfig {
 
     @Bean

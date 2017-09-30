@@ -105,7 +105,29 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>home</id>
+            <properties>
+                <package.env>home</package.env>
+            </properties>
+        </profile>
+        <profile>
+            <id>office</id>
+            <properties>
+                <package.env>office</package.env>
+            </properties>
+        </profile>
+        <profile>
+            <id>product</id>
+            <properties>
+                <package.env>product</package.env>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -126,7 +148,19 @@
                 </executions>
             </plugin>
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>conf/${package.env}</directory>
+            </resource>
+        </resources>
     </build>
+
+
+
 
 
 
