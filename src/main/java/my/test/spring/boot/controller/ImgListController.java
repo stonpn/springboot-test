@@ -50,7 +50,7 @@ public class ImgListController {
     public String ListSex(Model model) {
         List<String> fileList = getFileNameList(sexGifPath);
 
-        LOGGER.info("list-s size:{},memory:{}",fileList == null ? 0 : fileList.size(), fileList.toString().getBytes());
+        LOGGER.info("list-s size:{},memory:{}",fileList == null ? 0 : fileList.size(), fileList.toString().getBytes().length);
         model.addAttribute("fileList", fileList);
         return "gif-s";
     }
@@ -58,7 +58,7 @@ public class ImgListController {
     @RequestMapping("/other-s")
     public String OtherSex(Model model) {
         List<String> fileList = getFileNameList(sexOtherPath);
-        LOGGER.info("other-s size:{},memory:{}",fileList == null ? 0 : fileList.size(), fileList.toString().getBytes());
+        LOGGER.info("other-s size:{},memory:{}",fileList == null ? 0 : fileList.size(), fileList.toString().getBytes().length);
         model.addAttribute("fileList", fileList);
         return "other-s";
     }
