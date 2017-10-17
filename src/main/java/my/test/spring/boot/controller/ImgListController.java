@@ -76,6 +76,9 @@ public class ImgListController {
         if (dir.isDirectory()) {
             File[] images = dir.listFiles();
             for (File img : images) {
+                if (img.isDirectory()) {
+                    continue;
+                }
                 resultList.add(img.getName());
             }
         }

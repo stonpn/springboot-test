@@ -1,5 +1,7 @@
 package my.test.spring.boot.controller;
 
+import my.test.spring.boot.common.model.MemberModel;
+import my.test.spring.boot.mapper.TestMapper;
 import my.test.spring.boot.util.RedisClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,10 +22,15 @@ public class IndexController {
     @Inject
     private RedisClient redisClient;
 
+    @Inject
+    private TestMapper testMapper;
+
     private final static Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
     @RequestMapping("/index")
     public String index(HttpServletRequest request, Model model) {
+        MemberModel memberModel = testMapper.selectById(1);
+        System.out.println(memberModel);
         LOGGER.info("redis get:{}", redisClient.get("a"));
         File file = new File("/home/pengni/Desktop/up-test");
         if (file.isDirectory()) {
