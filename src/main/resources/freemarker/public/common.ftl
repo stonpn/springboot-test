@@ -1,3 +1,5 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <style type="text/css">
     #login
     {
@@ -69,6 +71,7 @@
         over.style.display = "block";
     }
 </script>
+</head>
 <div id="login">
     <span id="big_content" align="center"></span>
 </div>
