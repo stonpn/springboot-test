@@ -12,14 +12,14 @@
     {
         width: 100%;
         height: 100%;
-        opacity:0.8;/*设置背景色透明度,1为完全不透明,IE需要使用filter:alpha(opacity=80);*/
-        filter:alpha(opacity=80);
+        /*opacity:0.8;!*设置背景色透明度,1为完全不透明,IE需要使用filter:alpha(opacity=80);*!*/
+        /*filter:alpha(opacity=80);*/
         display: none;
         position:absolute;
         top:0;
         left:0;
         z-index:1;
-        background: silver;
+        /*background: silver;*/
     }
 </style>
 
@@ -30,7 +30,7 @@
         var login = document.getElementById('login');
         var over = document.getElementById('over');
         login.style.display = "block";
-        over.style.display = "block";
+        over.style.display = "none";
         var index = document.getElementById(i);
         var src = index.firstElementChild.firstElementChild.src;
         document.getElementById("big_content").innerHTML='<a href="javascript:hide()"><img src="' + src + '" align="center"/></a>';
@@ -40,11 +40,10 @@
         var login = document.getElementById('login');
         var over = document.getElementById('over');
         login.style.display = "none";
-        over.style.display = "none";
+        over.style.display = "block";
     }
 </script>
 <div id="login">
     <div id="big_content"></div>
 </div>
 
-<div id="over"></div>
