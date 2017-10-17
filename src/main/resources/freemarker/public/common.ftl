@@ -25,16 +25,43 @@
 
 <script type="text/javascript">
 
+    document.onkeydown=function(event){
+                     var e = event || window.event || arguments.callee.caller.arguments[0];
+                     if(e && e.keyCode == 37){
+                            var content = document.getElementById("big_content");
+                            var i = content.firstElementChild.id;
+                            var index = parseInt(i);
+                            index = index - 1;
+                            textImg(index);
+                     }
+                     if(e && e.keyCode == 39){
+                         var content = document.getElementById("big_content");
+                         var i = content.firstElementChild.id;
+                         var index = parseInt(i);
+                         index = index + 1;
+                         textImg(index);
+                     }
+                 };
+
     function show(i)
     {
         var login = document.getElementById('login');
         var over = document.getElementById('over');
         login.style.display = "block";
         over.style.display = "none";
-        var index = document.getElementById(i);
-        var src = index.firstElementChild.firstElementChild.src;
-        document.getElementById("big_content").innerHTML='<a href="javascript:hide()"><img src="' + src + '" align="center"/></a>';
+        textImg(i);
     }
+
+    function textImg(i) {
+        var index = document.getElementById(i);
+        if (index == null || index == 'undefined') {
+
+        } else {
+            var src = index.firstElementChild.firstElementChild.src;
+            document.getElementById("big_content").innerHTML='<a id="'+i+'" href="javascript:hide()"><img src="' + src + '" align="center"/></a>';
+        }
+    }
+
     function hide()
     {
         var login = document.getElementById('login');
