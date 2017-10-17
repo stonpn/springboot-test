@@ -70,6 +70,6 @@
     }
 </script>
 <div id="login">
-    <span id="big_content"></span>
+    <span id="big_content" align="center"></span>
 </div>
 
