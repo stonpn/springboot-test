@@ -57,7 +57,7 @@
 
         } else {
             var src = index.firstElementChild.firstElementChild.src;
-            document.getElementById("big_content").innerHTML='<a id="'+i+'" href="javascript:hide()"><img src="' + src + '" align="center" width="100%" height="100%"/></a>';
+            document.getElementById("big_content").innerHTML='<a id="'+i+'" href="javascript:hide()"><img src="' + src + '" align="center" height="100%"/></a>';
         }
     }
 
