@@ -7,7 +7,7 @@
                 <#--<a href="${imgUrl}/other/${f}">-->
                     <img src="${imgUrl}/gif/sex/${f}" width="200"/>
                 </a>
-                <a href="/file-delete.html?filename=${f}">删除</a>
+                <a href="/file-sex-delete.html?filename=${f}">删除</a>
             </span>
     </#list>
     </table>
