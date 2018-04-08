@@ -92,21 +92,21 @@ public class ImgListController {
     private List<String> sortList(List<String> list) {
         int listSize = list.size();
         List<String> newList = new ArrayList<String>(listSize);
-        for (String a : newList) {
-            newList.add(null);
+        for (int k = 0;k < listSize; k++) {
+            newList.add("1");
         }
         Random random = new SecureRandom();
         for (String path : list) {
             int randomNumber = random.nextInt(listSize);
-            if (randomNumber % 10 == 0 && newList.get(0) == null) {
+            if (randomNumber % 10 == 0 && newList.get(0).equals("1")) {
                 newList.set(0, path);
             }
-            if (newList.get(randomNumber) == null) {
+            if (newList.get(randomNumber).equals("1")) {
                 newList.set(randomNumber, path);
             } else {
                 boolean found = false;
                 for (int i = randomNumber;i < listSize;i++) {
-                    if (newList.get(i) == null) {
+                    if (newList.get(i).equals("1")) {
                         newList.set(i, path);
                         found = true;
                         break;
@@ -116,7 +116,7 @@ public class ImgListController {
                     continue;
                 }
                 for (int j = randomNumber; j >= 0; j--) {
-                    if (newList.get(j) == null) {
+                    if (newList.get(j).equals("1")) {
                         newList.set(j, path);
                         break;
                     }
