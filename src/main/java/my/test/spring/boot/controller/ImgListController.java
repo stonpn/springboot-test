@@ -92,6 +92,9 @@ public class ImgListController {
     private List<String> sortList(List<String> list) {
         int listSize = list.size();
         List<String> newList = new ArrayList<String>(listSize);
+        for (String a : newList) {
+            newList.add(null);
+        }
         Random random = new SecureRandom();
         for (String path : list) {
             int randomNumber = random.nextInt(listSize);
