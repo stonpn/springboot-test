@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.security.SecureRandom;
+import java.util.*;
 
 /**
  * Created by pengni on 17-8-17.
@@ -38,6 +38,7 @@ public class ImgListController {
     @RequestMapping("/list-image")
     public String ListCommonImg(Model model) {
         List<String> fileList = getFileNameList(path);
+        fileList = sortList(fileList);
         model.addAttribute("fileList", fileList);
         model.addAttribute("imgUrl", imgUrl);
         return "common-image";
@@ -46,6 +47,7 @@ public class ImgListController {
     @RequestMapping("/list-gif")
     public String ListGifImg(Model model) {
         List<String> fileList = getFileNameList(gifPath);
+        fileList = sortList(fileList);
         model.addAttribute("fileList", fileList);
         model.addAttribute("imgUrl", imgUrl);
         return "gif-image";
@@ -56,6 +58,7 @@ public class ImgListController {
         List<String> fileList = getFileNameList(sexGifPath);
 
         LOGGER.info("list-s size:{},memory:{}",fileList == null ? 0 : fileList.size(), fileList.toString().getBytes().length);
+        fileList = sortList(fileList);
         model.addAttribute("fileList", fileList);
         model.addAttribute("imgUrl", imgUrl);
         return "gif-s";
@@ -65,6 +68,7 @@ public class ImgListController {
     public String OtherSex(Model model) {
         List<String> fileList = getFileNameList(sexOtherPath);
         LOGGER.info("other-s size:{},memory:{}",fileList == null ? 0 : fileList.size(), fileList.toString().getBytes().length);
+        fileList = sortList(fileList);
         model.addAttribute("fileList", fileList);
         model.addAttribute("imgUrl", imgUrl);
         return "other-s";
@@ -84,4 +88,41 @@ public class ImgListController {
         }
         return resultList;
     }
+
+    private List<String> sortList(List<String> list) {
+        int listSize = list.size();
+        List<String> newList = new ArrayList<String>(listSize);
+        Random random = new SecureRandom();
+        for (String path : list) {
+            int randomNumber = random.nextInt(listSize);
+            if (randomNumber % 10 == 0 && newList.get(0) == null) {
+                newList.set(0, path);
+            }
+            if (newList.get(randomNumber) == null) {
+                newList.set(randomNumber, path);
+            } else {
+                boolean found = false;
+                for (int i = randomNumber;i < listSize;i++) {
+                    if (newList.get(i) == null) {
+                        newList.set(i, path);
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) {
+                    continue;
+                }
+                for (int j = randomNumber; j >= 0; j--) {
+                    if (newList.get(j) == null) {
+                        newList.set(j, path);
+                        break;
+                    }
+                }
+            }
+        }
+        return newList;
+    }
+
+
+
 }
