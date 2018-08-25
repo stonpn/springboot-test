@@ -4,4 +4,4 @@
     <button type="submit">submit</button>
 </form>
 
-<video src="https://cd-insight.oss-cn-shenzhen.aliyuncs.com/%E9%A3%9E%E6%9C%BA.mp4" style="width: 200px;height:120px;"/>
+<video src="https://cd-insight.oss-cn-shenzhen.aliyuncs.com/%E9%A3%9E%E6%9C%BA.mp4" type="video/mp4" controls/>
