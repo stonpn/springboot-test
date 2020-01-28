@@ -31,7 +31,6 @@ public class IndexController {
     public String index(HttpServletRequest request, Model model) {
         MemberModel memberModel = testMapper.selectById(1);
         System.out.println(memberModel);
-        LOGGER.info("redis get:{}", redisClient.get("a"));
         File file = new File("/home/pengni/Desktop/up-test");
         if (file.isDirectory()) {
             File[] files = file.listFiles();
@@ -39,6 +38,11 @@ public class IndexController {
         }
 
         return "index";
+    }
+
+    @RequestMapping("/oss-get")
+    public String ossGet(HttpServletRequest request, Model model) {
+        return "oss";
     }
 
     @RequestMapping("/myfamily")
