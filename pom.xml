@@ -146,6 +146,25 @@
         </profile>
     </profiles>
 
+    <repositories>
+        <repository>
+            <id>maven-repo</id>
+            <name>OSSEZ Repository</name>
+            <url>https://maven.ossez.com/repository/internal</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-repo</id>
+            <name>OSSEZ Repository</name>
+            <url>https://maven.ossez.com/repository/internal</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
