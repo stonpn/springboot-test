@@ -152,9 +152,24 @@
             <name>OSSEZ Repository</name>
             <url>https://maven.ossez.com/repository/internal</url>
         </repository>
+        <repository>
+            <id>central</id>
+            <name>central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
     </repositories>
 
     <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <name>central Respository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+
+
         <pluginRepository>
             <id>maven-repo</id>
             <name>OSSEZ Repository</name>
