@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class LoginController {
@@ -44,7 +46,11 @@ public class LoginController {
         if (password == null) {
             return NOT_LOGIN_URL;
         }
-        if (password.equalsIgnoreCase(PASSWORD)) {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String day = sdf.format(date);
+        String[] arrs = day.split("-");
+        if (password.equalsIgnoreCase(arrs[1] + PASSWORD + arrs[2])) {
             loginCache.setLoginToken(jsId, "1", 7200);
             String callback = request.getParameter("callback");
             if (callback != null) {
